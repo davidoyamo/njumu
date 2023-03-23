@@ -45,7 +45,7 @@ class homepage extends StatelessWidget {
         gridDelegate:
             SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (context, index) =>
-            Container(child: Image.asset(Paths.nike)),
+            Container(child: Image.asset(Paths.shoe2)),
       ),
     );
   }
