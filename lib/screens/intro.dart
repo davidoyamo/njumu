@@ -18,7 +18,7 @@ class intro extends StatelessWidget {
           children: [
             const Spacer(),
             //image asset
-            Image.asset(Paths.nikes),
+            Image.asset(Paths.nike),
             SizedBox(
               height: 20,
             ),

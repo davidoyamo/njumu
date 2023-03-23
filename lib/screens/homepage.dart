@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:njumu/config/config.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../widgets/drawer.dart';
+import 'package:njumu/utils/theme.dart';
 
 //declaring the class intropage
 class homepage extends StatelessWidget {
@@ -11,45 +12,41 @@ class homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     //returns a blank scaffold
     return Scaffold(
-        drawer: drawer(),
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          leading:
-              //builder for the icon menu
-              Builder(
-            builder: (context) => IconButton(
-              icon: Icon(Icons.menu, color: Color.fromARGB(255, 12, 23, 29)),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
+      drawer: drawer(),
+      appBar: AppBar(
+        leading:
+            //builder for the icon menu
+            Builder(
+          builder: (context) => IconButton(
+            icon: Icon(
+              Icons.menu,
             ),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
           ),
-          //title widget
-          title: Text(
-            "Njumu",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black),
-          ),
-          //actions widget
-
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.shopping_bag,
-                color: Colors.black,
-              ),
-            ),
-          ],
         ),
-        body: MasonryGridView.builder(
-          itemCount: 6,
-          gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          itemBuilder: (context, index) => Container(
-            child: Expanded(child: Image.asset(Paths.nikes)),
+        //title widget
+        title: Text("Njumu", style: AppBarTheme.of(context).titleTextStyle),
+        //actions widget
+
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.shopping_cart,
+              size: 30,
+            ),
           ),
-        ));
+        ],
+      ),
+      body: MasonryGridView.builder(
+        itemCount: 6,
+        gridDelegate:
+            SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemBuilder: (context, index) =>
+            Container(child: Image.asset(Paths.nike)),
+      ),
+    );
   }
 }
