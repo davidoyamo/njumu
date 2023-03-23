@@ -12,44 +12,52 @@ class intro extends StatelessWidget {
     return Scaffold(
         backgroundColor: Color.fromARGB(199, 85, 230, 235),
         //shoe image
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Spacer(),
-            //image asset
-            Image.asset(Paths.shoe1),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "We sell quality shoes and accessories to improve your style ",
-              //text
-              textAlign: TextAlign.center,
-              style: GoogleFonts.getFont(
-                'Noto Sans',
-                fontSize: 30,
-                fontWeight: FontWeight.w700,
-                color: Color.fromARGB(255, 250, 242, 245),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Spacer(),
+              //image asset
+              Expanded(
+                child: Image.asset(
+                  Paths.shoe1,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            //icon
-            IconButton(
-                icon:
-                    Icon(Icons.next_plan, size: 60), //navigating to homescreen
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => homepage(),
-                    ),
-                  );
-                }),
-            Spacer()
-          ],
+
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text(
+                  "We sell quality shoes and accessories to improve your style ",
+                  //text
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.getFont(
+                    'Noto Sans',
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Color.fromARGB(255, 250, 242, 245),
+                  ),
+                ),
+              ),
+              Spacer(),
+              //icon
+              Expanded(
+                child: IconButton(
+                    icon: Icon(Icons.next_plan,
+                        size: 60), //navigating to homescreen
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => homepage(),
+                        ),
+                      );
+                    }),
+              ),
+              Spacer()
+            ],
+          ),
         ));
   }
 }
