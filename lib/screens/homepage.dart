@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:njumu/config/config.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../widgets/drawer.dart';
-import 'package:njumu/utils/theme.dart';
+
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 //declaring the class intropage
