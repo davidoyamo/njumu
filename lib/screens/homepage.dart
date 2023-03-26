@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:njumu/config/config.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:njumu/config/paths.dart';
+import 'package:njumu/models/itemlist.dart';
+import '../models/item.dart';
 import '../widgets/drawer.dart';
-
 import 'package:google_nav_bar/google_nav_bar.dart';
+import '../widgets/itemtile.dart';
 
 //declaring the class intropage
-class homepage extends StatelessWidget {
-  const homepage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 //
   @override
   Widget build(BuildContext context) {
     //returns a blank scaffold
     return Scaffold(
-      drawer: drawer(),
+      drawer: const drawer(),
       appBar: AppBar(
         leading:
             //builder for the icon menu
@@ -27,8 +28,7 @@ class homepage extends StatelessWidget {
             },
           ),
         ),
-        //title widget
-        title: Text("Njumu", style: AppBarTheme.of(context).titleTextStyle),
+
         //actions widget
 
         actions: [
@@ -42,13 +42,21 @@ class homepage extends StatelessWidget {
         ],
       ),
       //grid view with a fixed crossaxis count
-      body: MasonryGridView.builder(
-        itemCount: 6,
-        gridDelegate:
-            SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        itemBuilder: (context, index) =>
-            Container(child: Image.asset(Paths.shoe2)),
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: itemList.length,
+        itemBuilder: (context, index) {
+          final item = itemList[index];
+          return ItemTile(
+            item: item,
+          );
+        },
       ),
+
       //gnav
       bottomNavigationBar: GNav(
         backgroundColor: Colors.amber,
@@ -57,7 +65,7 @@ class homepage extends StatelessWidget {
         curve: Curves.easeInOutExpo,
         gap: 4,
         iconSize: 30,
-        rippleColor: Color.fromARGB(255, 146, 68, 68),
+        rippleColor: Color.fromARGB(255, 199, 74, 74),
         duration: Duration(milliseconds: 500),
         tabs: [
           GButton(icon: Icons.home, text: 'Home'),

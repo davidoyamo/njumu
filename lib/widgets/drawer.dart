@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:njumu/config/paths.dart';
+import 'package:njumu/screens/LandingPage.dart';
 
 class drawer extends StatelessWidget {
   const drawer({super.key});
@@ -7,8 +8,8 @@ class drawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Colors.amber,
       child: ListView(
-        clipBehavior: Clip.hardEdge,
         children: [
           SizedBox(
             height: 10,
@@ -18,7 +19,7 @@ class drawer extends StatelessWidget {
               child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              Paths.tick,
+              Paths.logo,
               fit: BoxFit.contain,
             ),
           )),
@@ -38,11 +39,21 @@ class drawer extends StatelessWidget {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
             ),
           ),
-          ListTile(
-            leading: Icon(Icons.home, size: 40),
-            title: Text(
-              'Home',
+          GestureDetector(
+            child: ListTile(
+              leading: Icon(Icons.home, size: 40),
+              title: Text(
+                'Home',
+              ),
             ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LandingPage(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: Icon(Icons.info, size: 40),
@@ -64,7 +75,6 @@ class drawer extends StatelessWidget {
           ),
         ],
       ),
-      backgroundColor: Colors.amber,
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:njumu/screens/LandingPage.dart';
 import 'package:njumu/screens/homepage.dart';
-import 'package:njumu/screens/intro.dart';
 import 'package:njumu/utils/theme.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: myTheme,
-      home: const intro(),
+      home: const HomePage(),
     );
   }
 }

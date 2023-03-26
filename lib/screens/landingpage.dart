@@ -4,37 +4,39 @@ import 'package:njumu/config/config.dart';
 import 'package:njumu/screens/homepage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class intro extends StatelessWidget {
-  const intro({super.key});
+class LandingPage extends StatelessWidget {
+  const LandingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(199, 85, 230, 235),
+        backgroundColor: Colors.amber,
         //shoe image
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Spacer(),
               //image asset
               Expanded(
                 child: Image.asset(
-                  Paths.shoe1,
+                  Paths.logo,
                   fit: BoxFit.cover,
                 ),
               ),
-
+              SizedBox(
+                height: 20,
+              ),
+              //text
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.only(left: 10.0, right: 10),
                 child: Text(
-                  "We sell quality shoes and accessories to improve your style ",
-                  //text
+                  "Footwear and Accessories",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.getFont(
-                    'Noto Sans',
-                    fontSize: 20,
+                    'Karla',
+                    fontSize: 28,
                     fontWeight: FontWeight.w700,
                     color: Color.fromARGB(255, 250, 242, 245),
                   ),
@@ -42,20 +44,31 @@ class intro extends StatelessWidget {
               ),
               Spacer(),
               //icon
-              Expanded(
+              Padding(
+                padding: EdgeInsets.all(10),
                 child: IconButton(
-                    icon: Icon(Icons.next_plan,
-                        size: 60), //navigating to homescreen
+                    icon: Icon(Icons.next_plan, size: 40),
+                    //navigating to homescreen
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => homepage(),
+                          builder: (context) => HomePage(),
                         ),
                       );
                     }),
               ),
-              Spacer()
+              Text('Shop',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.getFont(
+                    'Karla',
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Color.fromARGB(255, 250, 242, 245),
+                  )),
+              SizedBox(
+                height: 30,
+              )
             ],
           ),
         ));
