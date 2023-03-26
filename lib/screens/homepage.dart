@@ -12,9 +12,10 @@ class HomePage extends StatelessWidget {
 //
   @override
   Widget build(BuildContext context) {
-    //returns a blank scaffold
+    //returns a scaffold
     return Scaffold(
       drawer: const drawer(),
+
       appBar: AppBar(
         leading:
             //builder for the icon menu
@@ -35,32 +36,108 @@ class HomePage extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: Icon(
-              Icons.shopping_cart,
+              Icons.dark_mode,
               size: 30,
             ),
           ),
         ],
       ),
-      //grid view with a fixed crossaxis count
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-        ),
-        itemCount: itemList.length,
-        itemBuilder: (context, index) {
-          final item = itemList[index];
-          return ItemTile(
-            item: item,
-          );
-        },
+
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Divider(
+            height: 10,
+            thickness: 1,
+            color: Colors.black,
+            indent: 10,
+            endIndent: 10,
+          ),
+
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 50.0, right: 50, top: 5, bottom: 5),
+            child: Row(
+              children: [
+                //filter icon
+                Row(
+                  children: [
+                    Icon(Icons.sort),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "filter",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )
+                  ],
+                ),
+                Spacer(),
+                //search icon
+                Row(
+                  children: [
+                    Icon(Icons.search),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "search",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )
+                  ],
+                ),
+                Spacer(),
+                //shopping cart icon
+
+                Row(
+                  children: [
+                    Icon(Icons.shopping_cart),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "cart",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 10,
+            thickness: 1,
+            color: Colors.black,
+            indent: 10,
+            endIndent: 10,
+          ),
+          //grid view with a fixed crossaxis count
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
+                itemCount: itemList.length,
+                itemBuilder: (context, index) {
+                  final item = itemList[index];
+                  return ItemTile(
+                    item: item,
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
       ),
 
       //gnav
       bottomNavigationBar: GNav(
-        backgroundColor: Colors.amber,
-        activeColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: Colors.white,
+        activeColor: Color.fromARGB(255, 177, 48, 48),
         tabBackgroundColor: Color.fromARGB(115, 252, 252, 252),
         curve: Curves.easeInOutExpo,
         gap: 4,
@@ -69,6 +146,10 @@ class HomePage extends StatelessWidget {
         duration: Duration(milliseconds: 500),
         tabs: [
           GButton(icon: Icons.home, text: 'Home'),
+          GButton(
+            icon: Icons.trending_up,
+            text: "Trends",
+          ),
           GButton(icon: Icons.favorite, text: 'Favorite'),
           GButton(icon: Icons.search, text: 'Search'),
         ],

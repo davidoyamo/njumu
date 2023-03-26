@@ -8,7 +8,7 @@ class drawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.white,
       child: ListView(
         children: [
           SizedBox(
@@ -26,19 +26,13 @@ class drawer extends StatelessWidget {
           Divider(
             color: Colors.black,
             height: 10,
-            thickness: 10,
+            thickness: 2,
           ),
           SizedBox(
             height: 20,
           ),
           //listtiles
-          ListTile(
-            leading: Icon(Icons.search_outlined, size: 40),
-            title: Text(
-              'Search',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-            ),
-          ),
+
           GestureDetector(
             child: ListTile(
               leading: Icon(Icons.home, size: 40),
@@ -55,16 +49,11 @@ class drawer extends StatelessWidget {
               );
             },
           ),
-          ListTile(
-            leading: Icon(Icons.info, size: 40),
-            title: Text(
-              'About',
-            ),
-          ),
+
           ListTile(
             leading: Icon(Icons.call, size: 40),
             title: Text(
-              'Contact',
+              'Contact us',
             ),
           ),
           ListTile(

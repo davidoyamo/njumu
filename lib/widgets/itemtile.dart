@@ -10,13 +10,14 @@ class ItemTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(4),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.grey[200],
-      ),
+          borderRadius: BorderRadius.circular(15),
+          color: Color.fromARGB(255, 224, 221, 221)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          //image
           Expanded(
             child: Image.asset(
               item.image,
@@ -28,21 +29,16 @@ class ItemTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //image text
                 Text(
                   item.text,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
                 const SizedBox(height: 4),
+                //price
                 Text(
-                  item.price,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    color: Colors.blue,
-                  ),
+                  '\$' + item.price,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
               ],
             ),
